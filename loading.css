@@ -1,0 +1,78 @@
+body {
+    overflow: hidden; /* Prevents scrolling during loading */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: white;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #001f3f; /* A clean white background */
+    z-index: 9999;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 20px; /* Adds space between the logo and the bar */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.loading-bar {
+    width: 250px; /* Width of the loading bar */
+    height: 6px; /* Height of the loading bar */
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative; /* Needed for the inner bar animation */
+}
+
+/* The animated green bar */
+.loading-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #4CAF50; /* Green color */
+    width: 0;
+    animation: loading 3s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+}
+
+/* The class to hide the preloader with a smooth fade-out */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Keyframes for the left-to-right animation */
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Keyframes for the logo pulse effect (from a previous example) */
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.95);
+    }
+}
